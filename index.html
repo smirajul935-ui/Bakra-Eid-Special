@@ -70,25 +70,21 @@
             </div>
         </div>
 
-        <!-- Name Input Box -->
-        <div class="share-section glass-card" id="share-section">
-            <p style="font-weight: bold; margin-bottom: 10px;">Aap bhi apna naam likh kar bhejein 👇</p>
-            <input type="text" id="user-name-input" placeholder="Aapka Naam Yahan Likhein..." autocomplete="off">
-            <button onclick="createCustomLink()" class="premium-btn">Create Magic Link ✨</button>
-        </div>
-
-        <!-- 🌟 VIRAL TASK & REWARD SECTION 🌟 -->
-        <div class="social-share glass-card" id="social-share" style="display: none;">
+        <!-- 🌟 DIRECT SHARE & REWARD SECTION 🌟 -->
+        <div class="social-share glass-card" id="viral-share-box">
             <h3 class="gold-text"><i class="fa-solid fa-gift"></i> Unlock Secret Reward!</h3>
-            <p style="font-size: 0.95rem; margin: 10px 0;">Apna reward kholne ke liye isse kam se kam <b>5 doston ya groups</b> mein share karein.</p>
+            <p style="font-size: 0.95rem; margin: 10px 0;">Apna naam likhein aur <b>5 doston/groups</b> mein share karke apna gift kholen 👇</p>
             
+            <!-- Direct Name Input -->
+            <input type="text" id="user-name-input" placeholder="Aapka Naam Yahan Likhein..." autocomplete="off">
+
             <!-- Progress Bar -->
-            <div class="progress-container">
+            <div class="progress-container" id="progress-box">
                 <div class="progress-bar" id="progress-bar"></div>
             </div>
-            <!-- Update to 0 / 5 -->
             <p id="share-status" style="margin-bottom: 15px; font-weight: bold; color: #fff;">0 / 5 Shared</p>
 
+            <!-- Direct Share Button -->
             <button onclick="shareWhatsAppTask()" class="whatsapp-btn" id="share-btn">
                 <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
             </button>
