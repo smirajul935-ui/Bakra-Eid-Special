@@ -34,7 +34,33 @@ enterBtn.addEventListener('click', () => {
     bgAudio.play();
 });
 
-// --- 3. VIRAL DIRECT SHARE TASK LOGIC (5 SHARES) ---
+// --- 3. PREMIUM GOLDEN QUOTES SLIDER ---
+const quotes = [
+    "May Allah's blessings be with you today, tomorrow, and always.",
+    "Let this Eid be the occasion of sharing love and caring for others.",
+    "May the magic of this Eid bring lots of peace and prosperity.",
+    "Har dua qubool ho, har gham door ho, Eid jaisa khoobsurat har din ho.",
+    "May your plate of life be always full of joy and happiness."
+];
+
+let quoteIndex = 0;
+const quoteElement = document.getElementById('quote-text');
+
+setInterval(() => {
+    // Fade Out
+    quoteElement.style.opacity = 0;
+    
+    setTimeout(() => {
+        // Change Text and Fade In
+        quoteIndex = (quoteIndex + 1) % quotes.length;
+        quoteElement.innerText = `"${quotes[quoteIndex]}"`;
+        quoteElement.style.opacity = 1;
+    }, 800); // Wait for fade out to complete
+    
+}, 4000); // Change quote every 4 seconds
+
+
+// --- 4. VIRAL DIRECT SHARE TASK LOGIC (5 SHARES) ---
 let shareCount = 0;
 const totalSharesNeeded = 5;
 
@@ -68,30 +94,10 @@ function shareWhatsAppTask() {
             alert(`Shabaash! Abhi ${totalSharesNeeded - shareCount} share aur baaki hain.\nJaldi se bhejein aur apna reward unlock karein!`);
         }, 1500); 
     } else {
-        // Task Complete! Pura Purana Box Chupa Do, Naya Telegram Box Dikhao
         document.getElementById('share-content').style.display = 'none';
         document.getElementById('reward-section').style.display = 'block';
     }
 }
-
-// --- 4. Countdown (Target: Tomorrow Midnight) ---
-const now = new Date();
-const targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0).getTime();
-
-const timer = setInterval(() => {
-    const currentTime = new Date().getTime();
-    const distance = targetDate - currentTime;
-
-    if (distance < 0) {
-        clearInterval(timer);
-        document.getElementById("countdown").innerHTML = "<h2 class='gold-text'>Eid Mubarak! Celebration Time!</h2>";
-        return;
-    }
-
-    document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-    document.getElementById("mins").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-    document.getElementById("secs").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-}, 1000);
 
 // --- 5. Floating Background Stars & Moons ---
 const elementsContainer = document.getElementById('floating-elements');
