@@ -1,112 +1,38 @@
 /* Core Variables */
-:root {
-    --gold: #ffdf00;
-    --dark-gold: #c5a000;
-    --white: #ffffff;
-}
+:root { --gold: #ffdf00; --dark-gold: #c5a000; --white: #ffffff; }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-
 body { background: #000; color: var(--white); overflow-x: hidden; min-height: 100vh; }
 
-/* 🌟 Start Screen Settings 🌟 */
-#preloader { 
-    position: fixed; 
-    top: 0; left: 0; 
-    width: 100%; height: 100vh; 
-    z-index: 9999; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    transition: 0.8s ease-in-out; 
-    background-color: #000; /* Fallback */
-}
-
-/* Yahan aapki photo pure screen par stretch hogi */
-.preloader-bg-img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    z-index: 1;
-}
-
-/* Photo ke upar halka kaala parda taaki text padhne mein aaye */
-.preloader-dark-overlay {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 2;
-}
-
-.loader-content { 
-    position: relative;
-    z-index: 3;
-    text-align: center; 
-    padding: 20px; 
-    width: 100%;
-}
-
-.preloader-name-style {
-    margin-bottom: 30px;
-    font-size: 2.2rem !important;
-}
-
+/* Start Screen */
+#preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 9999; display: flex; justify-content: center; align-items: center; transition: 0.8s ease-in-out; background-color: #000; }
+.preloader-bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+.preloader-dark-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 2; }
+.loader-content { position: relative; z-index: 3; text-align: center; padding: 20px; width: 100%; }
+.preloader-name-style { margin-bottom: 30px; font-size: 2.2rem !important; }
 .white-text { margin-bottom: 25px; font-size: 1.1rem; color: #fff; text-shadow: 0 0 5px #000; }
 
-/* Background Video Setup */
+/* Background */
 #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; object-fit: cover; z-index: -3; }
 .video-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.2); z-index: -2; }
-
-/* Floating Elements (Moons & Stars) */
 #floating-elements { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; pointer-events: none; overflow: hidden; }
 .float-item { position: absolute; animation: floatUp linear infinite; text-shadow: 0 0 10px currentColor; opacity: 0.6; }
 @keyframes floatUp { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0.8; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
 
-/* Main Container */
+/* Main Container & Cards */
 .main-container { position: relative; z-index: 10; padding: 30px 15px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+.dynamic-name { font-size: 2.5rem; text-transform: capitalize; color: var(--gold); text-shadow: 0 0 10px var(--gold), 0 0 20px var(--dark-gold), 0 0 30px #fff; font-family: 'Amita', cursive; margin-bottom: 25px; animation: floatName 2s ease-in-out infinite; text-align: center; }
+@keyframes floatName { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
 
-/* Floating Name */
-.dynamic-name { 
-    font-size: 2.5rem; 
-    text-transform: capitalize; 
-    color: var(--gold);
-    text-shadow: 0 0 10px var(--gold), 0 0 20px var(--dark-gold), 0 0 30px #fff; 
-    font-family: 'Amita', cursive;
-    margin-bottom: 25px;
-    animation: floatName 2s ease-in-out infinite; 
-    text-align: center;
-}
-@keyframes floatName {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-}
+.glass-card { background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); border: 1px solid rgba(255, 223, 0, 0.3); border-radius: 20px; padding: 25px; margin-bottom: 25px; width: 100%; max-width: 500px; text-align: center; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); }
 
-/* Glassmorphism Cards */
-.glass-card { 
-    background: rgba(0, 0, 0, 0.4); 
-    backdrop-filter: blur(4px); 
-    -webkit-backdrop-filter: blur(4px); 
-    border: 1px solid rgba(255, 223, 0, 0.3); 
-    border-radius: 20px; 
-    padding: 25px; 
-    margin-bottom: 25px; 
-    width: 100%; 
-    max-width: 500px; 
-    text-align: center; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
-}
-
-/* Typography & Messages */
+/* Typography */
 .glow-text { color: var(--gold); text-shadow: 0 0 15px var(--gold); font-family: 'Amita', cursive; font-size: 2.5rem; margin-bottom: 15px;}
 .gold-text { color: var(--gold); font-weight: bold; }
 .message-card { font-family: 'Amita', cursive; font-size: 1.1rem; line-height: 1.8; }
 .msg-line { margin-bottom: 12px; }
 .ascii-art { font-size: 1.2rem; margin: 15px 0; letter-spacing: 1px; }
 .eid-year { font-size: 1.6rem; margin-top: 15px; }
-
-/* Animations */
 .pulse-anim { animation: pulse 2s infinite; }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
@@ -116,14 +42,16 @@ body { background: #000; color: var(--white); overflow-x: hidden; min-height: 10
 .countdown span { font-size: 1.6rem; font-weight: bold; color: var(--gold); }
 .countdown p { font-size: 0.8rem; margin-top: 5px; }
 
-/* Input & Buttons */
+/* Progress Bar Style */
+.progress-container { width: 100%; height: 22px; background: rgba(255, 255, 255, 0.2); border-radius: 15px; overflow: hidden; border: 1px solid var(--gold); margin: 15px 0 10px 0; }
+.progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #ffdf00, #c5a000); transition: width 0.6s ease-in-out; box-shadow: 0 0 10px var(--gold); }
+
+/* Inputs & Buttons */
 input[type="text"] { width: 100%; padding: 15px; border-radius: 30px; border: 2px solid var(--gold); background: rgba(0,0,0,0.6); color: white; font-size: 1.1rem; text-align: center; margin: 10px 0 20px 0; outline: none; }
 input[type="text"]::placeholder { color: #aaa; }
-
 .premium-btn { background: linear-gradient(45deg, #d4af37, #ffdf00); color: #000; border: none; padding: 12px 30px; font-size: 1.2rem; font-weight: bold; border-radius: 30px; cursor: pointer; box-shadow: 0 0 15px rgba(255, 223, 0, 0.5); transition: 0.3s; width: 100%; }
 .premium-btn:hover { transform: scale(1.03); box-shadow: 0 0 25px var(--gold); }
 
-/* WhatsApp Button */
 .whatsapp-btn { background: #25D366; color: white; border: none; padding: 15px 30px; font-size: 1.2rem; font-weight: bold; border-radius: 30px; cursor: pointer; box-shadow: 0 0 15px rgba(37, 211, 102, 0.5); transition: 0.3s; width: 100%; }
 .whatsapp-btn:hover { background: #20b858; transform: scale(1.03); box-shadow: 0 0 25px #25D366; }
 
