@@ -14,11 +14,14 @@
 </head>
 <body>
 
-    <!-- Tap to Open Box (For Audio Permission) -->
+    <!-- Start Screen (Pura Logo Photo & Name Yahan Aayega) -->
     <div id="preloader">
         <div class="loader-content">
+            <!-- User Ka Naam Bahar Show Hoga -->
+            <h2 id="preloader-name" class="dynamic-name" style="font-size: 2rem; margin-bottom: 20px;"></h2>
+            
             <h1 class="glow-text">Bakra Eid Special</h1>
-            <p>Tap below to open your surprise</p>
+            <p class="white-text">Tap below to open your surprise</p>
             <button id="enter-btn" class="premium-btn"><i class="fa-solid fa-gift"></i> Open Greeting</button>
         </div>
     </div>
@@ -28,19 +31,19 @@
         <source src="eid-song.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Background Video -->
+    <!-- Background Video (Andar open hone ke baad) -->
     <video autoplay muted loop playsinline id="bg-video">
         <source src="bg-video.mp4" type="video/mp4">
     </video>
-    <div class="video-overlay"></div> <!-- Very light overlay so video is clearly visible -->
+    <div class="video-overlay"></div>
 
     <!-- Floating Moons & Stars -->
     <div id="floating-elements"></div>
 
-    <!-- Main Content Box -->
+    <!-- Main Content Box (Andar ka hissa) -->
     <main class="main-container">
         
-        <!-- Glowing & Floating Name -->
+        <!-- Glowing Name Inside -->
         <h2 id="greeting-name" class="dynamic-name"></h2>
 
         <!-- Greeting Card -->
@@ -72,14 +75,14 @@
             </div>
         </div>
 
-        <!-- Name Input & Share Box -->
+        <!-- Name Input -->
         <div class="share-section glass-card" id="share-section">
             <p style="font-weight: bold; margin-bottom: 10px;">Aap bhi apna naam likh kar bhejein 👇</p>
             <input type="text" id="user-name-input" placeholder="Aapka Naam Yahan Likhein..." autocomplete="off">
             <button onclick="createCustomLink()" class="premium-btn">Create Magic Link ✨</button>
         </div>
 
-        <!-- WhatsApp Share Button -->
+        <!-- WhatsApp Button -->
         <div class="social-share glass-card" id="social-share" style="display: none;">
             <p style="font-weight: bold; margin-bottom: 15px; color: var(--gold);">Link Ready! Share with friends:</p>
             <button onclick="shareWhatsApp()" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i> Share on WhatsApp</button>
