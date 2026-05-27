@@ -9,23 +9,39 @@
 
 body { background: #000; color: var(--white); overflow-x: hidden; min-height: 100vh; }
 
-/* Preloader (Tap to Open) */
-#preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #0a0a0a; z-index: 9999; display: flex; justify-content: center; align-items: center; flex-direction: column; transition: 0.5s; }
-#preloader p { margin-bottom: 20px; font-size: 1.1rem; }
+/* 🌟 Start Screen (Logo Background + Dark Overlay) 🌟 */
+#preloader { 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; height: 100vh; 
+    /* Yahan logo.png aapke pura screen cover karega */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('logo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 9999; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    transition: 0.8s ease-in-out; 
+}
+.loader-content { text-align: center; padding: 20px; }
+.white-text { margin-bottom: 20px; font-size: 1.1rem; color: #fff; text-shadow: 0 0 5px #000; }
 
-/* Background Video Setup (Clear Visibility) */
+/* Background Video Setup */
 #bg-video { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; object-fit: cover; z-index: -3; }
-.video-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.2); z-index: -2; } /* Extremely light overlay */
+.video-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0, 0, 0, 0.2); z-index: -2; }
 
 /* Floating Elements (Moons & Stars) */
 #floating-elements { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1; pointer-events: none; overflow: hidden; }
-.float-item { position: absolute; animation: floatUp linear infinite; text-shadow: 0 0 10px currentColor; opacity: 0.6; } /* Opacity reduced so video shows clearly */
+.float-item { position: absolute; animation: floatUp linear infinite; text-shadow: 0 0 10px currentColor; opacity: 0.6; }
 @keyframes floatUp { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0.8; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
 
 /* Main Container */
 .main-container { position: relative; z-index: 10; padding: 30px 15px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
 
-/* Glowing & Floating Name */
+/* Floating Name */
 .dynamic-name { 
     font-size: 2.5rem; 
     text-transform: capitalize; 
@@ -41,10 +57,10 @@ body { background: #000; color: var(--white); overflow-x: hidden; min-height: 10
     50% { transform: translateY(-12px); }
 }
 
-/* Glassmorphism Cards (More transparent for video visibility) */
+/* Glassmorphism Cards */
 .glass-card { 
-    background: rgba(0, 0, 0, 0.35); /* More transparent */
-    backdrop-filter: blur(3px); /* Less blur */
+    background: rgba(0, 0, 0, 0.35); 
+    backdrop-filter: blur(3px); 
     -webkit-backdrop-filter: blur(3px); 
     border: 1px solid rgba(255, 223, 0, 0.3); 
     border-radius: 20px; 
@@ -87,6 +103,7 @@ input[type="text"]::placeholder { color: #aaa; }
 
 /* Mobile View Adjustments */
 @media (max-width: 600px) {
+    #preloader-name { font-size: 1.8rem !important; }
     .dynamic-name { font-size: 2rem; }
     .ascii-art { font-size: 1rem; }
     .message-card { font-size: 1rem; padding: 20px 15px; }
