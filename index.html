@@ -72,28 +72,36 @@
 
         <!-- 🌟 DIRECT SHARE & REWARD SECTION 🌟 -->
         <div class="social-share glass-card" id="viral-share-box">
-            <h3 class="gold-text"><i class="fa-solid fa-gift"></i> Unlock Secret Reward!</h3>
-            <p style="font-size: 0.95rem; margin: 10px 0;">Apna naam likhein aur <b>5 doston/groups</b> mein share karke apna gift kholen 👇</p>
-            
-            <!-- Direct Name Input -->
-            <input type="text" id="user-name-input" placeholder="Aapka Naam Yahan Likhein..." autocomplete="off">
+            <div id="share-content">
+                <h3 class="gold-text"><i class="fa-solid fa-gift"></i> Unlock Secret Reward!</h3>
+                <p style="font-size: 0.95rem; margin: 10px 0;">Apna naam likhein aur <b>5 doston/groups</b> mein share karke apna gift kholen 👇</p>
+                
+                <input type="text" id="user-name-input" placeholder="Aapka Naam Yahan Likhein..." autocomplete="off">
 
-            <!-- Progress Bar -->
-            <div class="progress-container" id="progress-box">
-                <div class="progress-bar" id="progress-bar"></div>
+                <div class="progress-container" id="progress-box">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <p id="share-status" style="margin-bottom: 15px; font-weight: bold; color: #fff;">0 / 5 Shared</p>
+
+                <button onclick="shareWhatsAppTask()" class="whatsapp-btn" id="share-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+                </button>
             </div>
-            <p id="share-status" style="margin-bottom: 15px; font-weight: bold; color: #fff;">0 / 5 Shared</p>
 
-            <!-- Direct Share Button -->
-            <button onclick="shareWhatsAppTask()" class="whatsapp-btn" id="share-btn">
-                <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
-            </button>
-
-            <!-- Reward Message -->
-            <div id="reward-section" style="display: none; margin-top: 20px; padding: 15px; border-radius: 15px; background: rgba(255, 223, 0, 0.2); border: 1px solid var(--gold);">
-                <h3 class="glow-text" style="font-size: 1.5rem; margin-bottom: 10px;">🎉 Task Completed!</h3>
-                <p class="white-text" style="font-weight: bold;">Aapka Secret Reward Lock ho chuka hai! 🎁</p>
-                <p class="gold-text" style="font-size: 0.9rem; margin-top: 5px;">Aaj raat <b>12:00 AM</b> baje isi link ko dubara open karein aur apna gift claim karein!</p>
+            <!-- 🌟 REWARD MESSAGE (Dikhega Jab Task Complete Hoga) 🌟 -->
+            <div id="reward-section" style="display: none; padding: 10px; border-radius: 15px;">
+                <h3 class="glow-text" style="font-size: 1.8rem; margin-bottom: 15px;">🎉 Thank You So Much!</h3>
+                
+                <p class="white-text" style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;">
+                    Aapne humein itna pyar aur support diya, iske liye dil se shukriya! ❤️<br><br>
+                    <span class="gold-text" style="font-weight: bold;">Aapka Surprise Gift aur bhi mazedar Eid Offers humare Telegram par wait kar rahe hain!</span>
+                </p>
+                
+                <a href="https://t.me/SagarTech99" target="_blank" style="text-decoration: none;">
+                    <button class="telegram-btn pulse-anim">
+                        <i class="fa-brands fa-telegram"></i> Join SagarTech99 For Reward
+                    </button>
+                </a>
             </div>
         </div>
 
