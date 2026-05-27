@@ -1,43 +1,43 @@
-// --- 1. Audio & Preloader Logic ---
-const preloader = document.getElementById('preloader');
-const enterBtn = document.getElementById('enter-btn');
-const bgAudio = document.getElementById('bg-audio');
-
-// Try to auto-play on load (might be blocked by browser)
-window.addEventListener('DOMContentLoaded', () => {
-    bgAudio.volume = 0.8;
-    let playPromise = bgAudio.play();
-    
-    if (playPromise !== undefined) {
-        playPromise.then(() => {
-            // Autoplay successful, hide preloader
-            preloader.style.display = 'none';
-        }).catch(error => {
-            // Autoplay blocked, wait for button click
-            console.log("Autoplay blocked. User needs to tap.");
-        });
-    }
-});
-
-// Button Click Event
-enterBtn.addEventListener('click', () => {
-    preloader.style.opacity = '0';
-    setTimeout(() => { preloader.style.display = 'none'; }, 500);
-    bgAudio.play();
-});
-
-// --- 2. Dynamic Name Feature ---
+// --- 1. Get Name from URL & Set Both Places ---
 const urlParams = new URLSearchParams(window.location.search);
 const userName = urlParams.get('name');
 let finalShareLink = window.location.href.split('?')[0]; 
 
+// Set name inside and outside (Start Screen)
+const greetingName = document.getElementById('greeting-name');
+const preloaderName = document.getElementById('preloader-name');
+
 if (userName) {
-    // URL me naam hai
-    document.getElementById('greeting-name').innerHTML = `✨ ${userName} Ki Taraf Se ✨`;
+    greetingName.innerHTML = `✨ ${userName} Ki Taraf Se ✨`;
+    preloaderName.innerHTML = `✨ ${userName} Ki Taraf Se ✨`;
 } else {
-    // URL me naam nahi hai
-    document.getElementById('greeting-name').innerHTML = `✨ Welcome ✨`;
+    greetingName.innerHTML = `✨ Welcome ✨`;
+    preloaderName.innerHTML = `✨ Welcome ✨`;
 }
+
+// --- 2. Audio & Preloader Logic ---
+const preloader = document.getElementById('preloader');
+const enterBtn = document.getElementById('enter-btn');
+const bgAudio = document.getElementById('bg-audio');
+
+// Try auto-play
+window.addEventListener('DOMContentLoaded', () => {
+    bgAudio.volume = 0.8;
+    let playPromise = bgAudio.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(() => {
+            console.log("Autoplay blocked. User tap required.");
+        });
+    }
+});
+
+// Button Click Event (Hides Screen & Plays Music)
+enterBtn.addEventListener('click', () => {
+    preloader.style.opacity = '0';
+    preloader.style.pointerEvents = 'none'; // Stop clicks
+    setTimeout(() => { preloader.style.display = 'none'; }, 800);
+    bgAudio.play();
+});
 
 // --- 3. Create Custom Link ---
 function createCustomLink() {
@@ -54,11 +54,10 @@ function createCustomLink() {
     document.getElementById('share-section').style.display = 'none';
     document.getElementById('social-share').style.display = 'block';
     
-    // Animate and update Name at the top immediately
-    const nameEl = document.getElementById('greeting-name');
-    nameEl.innerHTML = `✨ ${inputName} Ki Taraf Se ✨`;
+    // Update Name immediately inside
+    greetingName.innerHTML = `✨ ${inputName} Ki Taraf Se ✨`;
     
-    // Smooth scroll to top to see the name
+    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -68,7 +67,7 @@ function shareWhatsApp() {
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + finalShareLink)}`, '_blank');
 }
 
-// --- 5. Bakra Eid Countdown (Target: Tomorrow Midnight) ---
+// --- 5. Countdown (Target: Tomorrow Midnight) ---
 const now = new Date();
 const targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0).getTime();
 
@@ -92,7 +91,6 @@ const elementsContainer = document.getElementById('floating-elements');
 const icons = ['fa-moon', 'fa-star', 'fa-star-and-crescent'];
 const colors = ['#ffdf00', '#ffffff', '#00ffcc', '#ffaa00']; 
 
-// Create 30 floating icons
 for (let i = 0; i < 30; i++) {
     let el = document.createElement('i');
     let randomIcon = icons[Math.floor(Math.random() * icons.length)];
