@@ -1,7 +1,6 @@
 // --- 1. Get Name from URL & Set Both Places ---
 const urlParams = new URLSearchParams(window.location.search);
 const userName = urlParams.get('name');
-let finalShareLink = window.location.href.split('?')[0]; 
 
 const greetingName = document.getElementById('greeting-name');
 const preloaderName = document.getElementById('preloader-name');
@@ -35,32 +34,30 @@ enterBtn.addEventListener('click', () => {
     bgAudio.play();
 });
 
-// --- 3. Create Custom Link ---
-function createCustomLink() {
-    const inputName = document.getElementById('user-name-input').value.trim();
-    if (inputName === "") {
-        alert("Pehle apna naam likhein!");
-        return;
-    }
-    
-    finalShareLink = `${window.location.href.split('?')[0]}?name=${encodeURIComponent(inputName)}`;
-    
-    // Switch Sections
-    document.getElementById('share-section').style.display = 'none';
-    document.getElementById('social-share').style.display = 'block';
-    
-    greetingName.innerHTML = `✨ ${inputName} Ki Taraf Se ✨`;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// --- 4. VIRAL SHARE TASK LOGIC (5 SHARES) ---
+// --- 3. VIRAL DIRECT SHARE TASK LOGIC (5 SHARES) ---
 let shareCount = 0;
-const totalSharesNeeded = 5; // Changed from 12 to 5
+const totalSharesNeeded = 5;
 
 function shareWhatsAppTask() {
+    const inputName = document.getElementById('user-name-input').value.trim();
+    
+    // Agar user ne naam nahi likha, toh pehle naam mange
+    if (inputName === "") {
+        alert("Pehle apna naam likhein, phir WhatsApp par bhejein!");
+        document.getElementById('user-name-input').focus();
+        return;
+    }
+
+    // Naya Magic Link generate karna naam ke sath
+    let baseLink = window.location.href.split('?')[0];
+    let customShareLink = `${baseLink}?name=${encodeURIComponent(inputName)}`;
+    
+    // Turant screen par uska naam update karna
+    greetingName.innerHTML = `✨ ${inputName} Ki Taraf Se ✨`;
+
     // 1. Open WhatsApp to share
     const shareText = "Assalamu Alaikum! Yeh dekho aapke liye ek special surprise hai 🎁🌙 Link par click karein 👇\n\n";
-    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + finalShareLink)}`, '_blank');
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + customShareLink)}`, '_blank');
     
     // 2. Increase Counter
     shareCount++;
@@ -72,21 +69,22 @@ function shareWhatsAppTask() {
     document.getElementById('progress-bar').style.width = progressPercentage + "%";
     document.getElementById('share-status').innerText = `${shareCount} / ${totalSharesNeeded} Shared`;
 
-    // 4. Check Conditions
+    // 4. Check Conditions & Alerts
     if (shareCount < totalSharesNeeded) {
-        // Show alert after they come back from WhatsApp
         setTimeout(() => {
             alert(`Shabaash! Abhi ${totalSharesNeeded - shareCount} share aur baaki hain.\nJaldi se bhejein aur apna reward unlock karein!`);
         }, 1500); 
     } else {
-        // Task Complete!
+        // Task Complete! - Naam aur Share Button chupa do, Reward dikhao
         document.getElementById('share-btn').style.display = 'none';
+        document.getElementById('user-name-input').style.display = 'none';
+        document.getElementById('progress-box').style.display = 'none';
         document.getElementById('share-status').innerHTML = "🌟 Mission Accomplished 🌟";
         document.getElementById('reward-section').style.display = 'block';
     }
 }
 
-// --- 5. Countdown (Target: Tomorrow Midnight) ---
+// --- 4. Countdown (Target: Tomorrow Midnight) ---
 const now = new Date();
 const targetDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0).getTime();
 
@@ -105,7 +103,7 @@ const timer = setInterval(() => {
     document.getElementById("secs").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
 }, 1000);
 
-// --- 6. Floating Background Stars & Moons ---
+// --- 5. Floating Background Stars & Moons ---
 const elementsContainer = document.getElementById('floating-elements');
 const icons = ['fa-moon', 'fa-star', 'fa-star-and-crescent'];
 const colors = ['#ffdf00', '#ffffff', '#00ffcc', '#ffaa00']; 
