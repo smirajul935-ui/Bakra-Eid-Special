@@ -14,11 +14,15 @@
 </head>
 <body>
 
-    <!-- Start Screen (Pura Logo Photo & Name Yahan Aayega) -->
+    <!-- 🌟 START SCREEN (Fixed Black Screen Issue) 🌟 -->
     <div id="preloader">
+        <!-- Aapki Photo Yahan Se Load Hogi Pure Screen Par -->
+        <img src="logo.png" alt="Background Logo" class="preloader-bg-img">
+        <div class="preloader-dark-overlay"></div> <!-- Text ko clear dikhane ke liye dark parda -->
+        
         <div class="loader-content">
-            <!-- User Ka Naam Bahar Show Hoga -->
-            <h2 id="preloader-name" class="dynamic-name" style="font-size: 2rem; margin-bottom: 20px;"></h2>
+            <!-- User Ka Naam Yahan Top Par Chamkega -->
+            <h2 id="preloader-name" class="dynamic-name preloader-name-style"></h2>
             
             <h1 class="glow-text">Bakra Eid Special</h1>
             <p class="white-text">Tap below to open your surprise</p>
@@ -26,7 +30,7 @@
         </div>
     </div>
 
-    <!-- Background Audio -->
+    <!-- Background Audio (Aapka Song) -->
     <audio id="bg-audio" loop>
         <source src="eid-song.mp3" type="audio/mpeg">
     </audio>
@@ -40,7 +44,7 @@
     <!-- Floating Moons & Stars -->
     <div id="floating-elements"></div>
 
-    <!-- Main Content Box (Andar ka hissa) -->
+    <!-- 🌟 MAIN CONTENT BOX (Andar Ka Hissa) 🌟 -->
     <main class="main-container">
         
         <!-- Glowing Name Inside -->
@@ -82,7 +86,7 @@
             <button onclick="createCustomLink()" class="premium-btn">Create Magic Link ✨</button>
         </div>
 
-        <!-- WhatsApp Button -->
+        <!-- WhatsApp Button (Sirf WhatsApp) -->
         <div class="social-share glass-card" id="social-share" style="display: none;">
             <p style="font-weight: bold; margin-bottom: 15px; color: var(--gold);">Link Ready! Share with friends:</p>
             <button onclick="shareWhatsApp()" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i> Share on WhatsApp</button>
