@@ -20,22 +20,12 @@ const preloader = document.getElementById('preloader');
 const enterBtn = document.getElementById('enter-btn');
 const bgAudio = document.getElementById('bg-audio');
 
-// Try auto-play
-window.addEventListener('DOMContentLoaded', () => {
-    bgAudio.volume = 0.8;
-    let playPromise = bgAudio.play();
-    if (playPromise !== undefined) {
-        playPromise.catch(() => {
-            console.log("Autoplay blocked. User tap required.");
-        });
-    }
-});
-
 // Button Click Event (Hides Screen & Plays Music)
 enterBtn.addEventListener('click', () => {
     preloader.style.opacity = '0';
     preloader.style.pointerEvents = 'none'; // Stop clicks
     setTimeout(() => { preloader.style.display = 'none'; }, 800);
+    bgAudio.volume = 0.8;
     bgAudio.play();
 });
 
