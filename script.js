@@ -3,7 +3,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const userName = urlParams.get('name');
 let finalShareLink = window.location.href.split('?')[0]; 
 
-// Set name inside and outside (Start Screen)
 const greetingName = document.getElementById('greeting-name');
 const preloaderName = document.getElementById('preloader-name');
 
@@ -20,10 +19,17 @@ const preloader = document.getElementById('preloader');
 const enterBtn = document.getElementById('enter-btn');
 const bgAudio = document.getElementById('bg-audio');
 
-// Button Click Event (Hides Screen & Plays Music)
+window.addEventListener('DOMContentLoaded', () => {
+    bgAudio.volume = 0.8;
+    let playPromise = bgAudio.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(() => { console.log("Autoplay blocked. User tap required."); });
+    }
+});
+
 enterBtn.addEventListener('click', () => {
     preloader.style.opacity = '0';
-    preloader.style.pointerEvents = 'none'; // Stop clicks
+    preloader.style.pointerEvents = 'none'; 
     setTimeout(() => { preloader.style.display = 'none'; }, 800);
     bgAudio.volume = 0.8;
     bgAudio.play();
@@ -37,24 +43,47 @@ function createCustomLink() {
         return;
     }
     
-    // Generate new URL with Name
     finalShareLink = `${window.location.href.split('?')[0]}?name=${encodeURIComponent(inputName)}`;
     
-    // Hide input form, show WhatsApp button
+    // Switch Sections
     document.getElementById('share-section').style.display = 'none';
     document.getElementById('social-share').style.display = 'block';
     
-    // Update Name immediately inside
     greetingName.innerHTML = `✨ ${inputName} Ki Taraf Se ✨`;
-    
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// --- 4. WhatsApp Share ---
-function shareWhatsApp() {
+// --- 4. VIRAL SHARE TASK LOGIC (5 SHARES) ---
+let shareCount = 0;
+const totalSharesNeeded = 5; // Changed from 12 to 5
+
+function shareWhatsAppTask() {
+    // 1. Open WhatsApp to share
     const shareText = "Assalamu Alaikum! Yeh dekho aapke liye ek special surprise hai 🎁🌙 Link par click karein 👇\n\n";
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + finalShareLink)}`, '_blank');
+    
+    // 2. Increase Counter
+    shareCount++;
+    
+    // 3. Update Progress Bar
+    let progressPercentage = (shareCount / totalSharesNeeded) * 100;
+    if(progressPercentage > 100) progressPercentage = 100;
+    
+    document.getElementById('progress-bar').style.width = progressPercentage + "%";
+    document.getElementById('share-status').innerText = `${shareCount} / ${totalSharesNeeded} Shared`;
+
+    // 4. Check Conditions
+    if (shareCount < totalSharesNeeded) {
+        // Show alert after they come back from WhatsApp
+        setTimeout(() => {
+            alert(`Shabaash! Abhi ${totalSharesNeeded - shareCount} share aur baaki hain.\nJaldi se bhejein aur apna reward unlock karein!`);
+        }, 1500); 
+    } else {
+        // Task Complete!
+        document.getElementById('share-btn').style.display = 'none';
+        document.getElementById('share-status').innerHTML = "🌟 Mission Accomplished 🌟";
+        document.getElementById('reward-section').style.display = 'block';
+    }
 }
 
 // --- 5. Countdown (Target: Tomorrow Midnight) ---
@@ -85,12 +114,10 @@ for (let i = 0; i < 30; i++) {
     let el = document.createElement('i');
     let randomIcon = icons[Math.floor(Math.random() * icons.length)];
     el.classList.add('fa-solid', randomIcon, 'float-item');
-    
     el.style.color = colors[Math.floor(Math.random() * colors.length)];
     el.style.left = Math.random() * 100 + 'vw';
     el.style.fontSize = (Math.random() * 15 + 10) + 'px'; 
     el.style.animationDuration = (Math.random() * 5 + 6) + 's'; 
     el.style.animationDelay = Math.random() * 5 + 's';
-    
     elementsContainer.appendChild(el);
 }
