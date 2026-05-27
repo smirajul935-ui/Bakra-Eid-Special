@@ -54,6 +54,10 @@ input[type="text"]::placeholder { color: #aaa; }
 .whatsapp-btn { background: #25D366; color: white; border: none; padding: 15px 30px; font-size: 1.2rem; font-weight: bold; border-radius: 30px; cursor: pointer; box-shadow: 0 0 15px rgba(37, 211, 102, 0.5); transition: 0.3s; width: 100%; }
 .whatsapp-btn:hover { background: #20b858; transform: scale(1.03); box-shadow: 0 0 25px #25D366; }
 
+/* NEW Telegram Button Design */
+.telegram-btn { background: linear-gradient(45deg, #0088cc, #00aaff); color: white; border: none; padding: 15px 25px; font-size: 1.1rem; font-weight: bold; border-radius: 30px; cursor: pointer; box-shadow: 0 0 15px rgba(0, 136, 204, 0.5); transition: 0.3s; width: 100%; text-transform: uppercase; }
+.telegram-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0, 136, 204, 0.8); }
+
 /* Mobile View Adjustments */
 @media (max-width: 600px) {
     .preloader-name-style { font-size: 2rem !important; }
