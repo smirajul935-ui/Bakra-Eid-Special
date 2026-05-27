@@ -14,28 +14,25 @@
 </head>
 <body>
 
-    <!-- 🌟 START SCREEN (Fixed Black Screen Issue) 🌟 -->
+    <!-- 🌟 START SCREEN 🌟 -->
     <div id="preloader">
-        <!-- Aapki Photo Yahan Se Load Hogi Pure Screen Par -->
         <img src="logo.png" alt="Background Logo" class="preloader-bg-img">
-        <div class="preloader-dark-overlay"></div> <!-- Text ko clear dikhane ke liye dark parda -->
+        <div class="preloader-dark-overlay"></div> 
         
         <div class="loader-content">
-            <!-- User Ka Naam Yahan Top Par Chamkega -->
             <h2 id="preloader-name" class="dynamic-name preloader-name-style"></h2>
-            
             <h1 class="glow-text">Bakra Eid Special</h1>
             <p class="white-text">Tap below to open your surprise</p>
             <button id="enter-btn" class="premium-btn"><i class="fa-solid fa-gift"></i> Open Greeting</button>
         </div>
     </div>
 
-    <!-- Background Audio (Aapka Song) -->
+    <!-- Background Audio -->
     <audio id="bg-audio" loop>
         <source src="eid-song.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Background Video (Andar open hone ke baad) -->
+    <!-- Background Video -->
     <video autoplay muted loop playsinline id="bg-video">
         <source src="bg-video.mp4" type="video/mp4">
     </video>
@@ -44,28 +41,22 @@
     <!-- Floating Moons & Stars -->
     <div id="floating-elements"></div>
 
-    <!-- 🌟 MAIN CONTENT BOX (Andar Ka Hissa) 🌟 -->
+    <!-- 🌟 MAIN CONTENT BOX 🌟 -->
     <main class="main-container">
         
-        <!-- Glowing Name Inside -->
         <h2 id="greeting-name" class="dynamic-name"></h2>
 
         <!-- Greeting Card -->
         <div class="message-card glass-card">
             <p class="msg-line">🌙✨ Assalamu Alaikum ✨🌙</p>
-            
             <p class="ascii-art gold-text">
                 ╔══❖•ೋ° °ೋ•❖══╗<br>
                 🕋 Eid Ul Adha Mubarak 🐐<br>
                 ╚══❖•ೋ° °ೋ•❖══╝
             </p>
-            
             <p class="msg-line">Allah aapki zindagi ko<br>khushiyon, rehmat aur sukoon se bhar de 🤲❤️</p>
-            
             <p class="msg-line">Har dua qubool ho,<br>har gham door ho,<br>aur har din Eid jaisa khoobsurat ho ✨🌸</p>
-            
             <p class="msg-line">🐐 Bakra Eid ki dil se mubarakbaad 🕌<br>Aap aur aapke family hamesha muskurate rahein 💫</p>
-            
             <h3 class="eid-year gold-text pulse-anim">🌙 Eid Mubarak 2026 🌙</h3>
         </div>
 
@@ -79,17 +70,35 @@
             </div>
         </div>
 
-        <!-- Name Input -->
+        <!-- Name Input Box -->
         <div class="share-section glass-card" id="share-section">
             <p style="font-weight: bold; margin-bottom: 10px;">Aap bhi apna naam likh kar bhejein 👇</p>
             <input type="text" id="user-name-input" placeholder="Aapka Naam Yahan Likhein..." autocomplete="off">
             <button onclick="createCustomLink()" class="premium-btn">Create Magic Link ✨</button>
         </div>
 
-        <!-- WhatsApp Button (Sirf WhatsApp) -->
+        <!-- 🌟 VIRAL TASK & REWARD SECTION 🌟 -->
         <div class="social-share glass-card" id="social-share" style="display: none;">
-            <p style="font-weight: bold; margin-bottom: 15px; color: var(--gold);">Link Ready! Share with friends:</p>
-            <button onclick="shareWhatsApp()" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i> Share on WhatsApp</button>
+            <h3 class="gold-text"><i class="fa-solid fa-gift"></i> Unlock Secret Reward!</h3>
+            <p style="font-size: 0.95rem; margin: 10px 0;">Apna reward kholne ke liye isse kam se kam <b>5 doston ya groups</b> mein share karein.</p>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <!-- Update to 0 / 5 -->
+            <p id="share-status" style="margin-bottom: 15px; font-weight: bold; color: #fff;">0 / 5 Shared</p>
+
+            <button onclick="shareWhatsAppTask()" class="whatsapp-btn" id="share-btn">
+                <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+            </button>
+
+            <!-- Reward Message -->
+            <div id="reward-section" style="display: none; margin-top: 20px; padding: 15px; border-radius: 15px; background: rgba(255, 223, 0, 0.2); border: 1px solid var(--gold);">
+                <h3 class="glow-text" style="font-size: 1.5rem; margin-bottom: 10px;">🎉 Task Completed!</h3>
+                <p class="white-text" style="font-weight: bold;">Aapka Secret Reward Lock ho chuka hai! 🎁</p>
+                <p class="gold-text" style="font-size: 0.9rem; margin-top: 5px;">Aaj raat <b>12:00 AM</b> baje isi link ko dubara open karein aur apna gift claim karein!</p>
+            </div>
         </div>
 
     </main>
