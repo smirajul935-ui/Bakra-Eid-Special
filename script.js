@@ -41,45 +41,35 @@ const totalSharesNeeded = 5;
 function shareWhatsAppTask() {
     const inputName = document.getElementById('user-name-input').value.trim();
     
-    // Agar user ne naam nahi likha, toh pehle naam mange
     if (inputName === "") {
         alert("Pehle apna naam likhein, phir WhatsApp par bhejein!");
         document.getElementById('user-name-input').focus();
         return;
     }
 
-    // Naya Magic Link generate karna naam ke sath
     let baseLink = window.location.href.split('?')[0];
     let customShareLink = `${baseLink}?name=${encodeURIComponent(inputName)}`;
     
-    // Turant screen par uska naam update karna
     greetingName.innerHTML = `✨ ${inputName} Ki Taraf Se ✨`;
 
-    // 1. Open WhatsApp to share
     const shareText = "Assalamu Alaikum! Yeh dekho aapke liye ek special surprise hai 🎁🌙 Link par click karein 👇\n\n";
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + customShareLink)}`, '_blank');
     
-    // 2. Increase Counter
     shareCount++;
     
-    // 3. Update Progress Bar
     let progressPercentage = (shareCount / totalSharesNeeded) * 100;
     if(progressPercentage > 100) progressPercentage = 100;
     
     document.getElementById('progress-bar').style.width = progressPercentage + "%";
     document.getElementById('share-status').innerText = `${shareCount} / ${totalSharesNeeded} Shared`;
 
-    // 4. Check Conditions & Alerts
     if (shareCount < totalSharesNeeded) {
         setTimeout(() => {
             alert(`Shabaash! Abhi ${totalSharesNeeded - shareCount} share aur baaki hain.\nJaldi se bhejein aur apna reward unlock karein!`);
         }, 1500); 
     } else {
-        // Task Complete! - Naam aur Share Button chupa do, Reward dikhao
-        document.getElementById('share-btn').style.display = 'none';
-        document.getElementById('user-name-input').style.display = 'none';
-        document.getElementById('progress-box').style.display = 'none';
-        document.getElementById('share-status').innerHTML = "🌟 Mission Accomplished 🌟";
+        // Task Complete! Pura Purana Box Chupa Do, Naya Telegram Box Dikhao
+        document.getElementById('share-content').style.display = 'none';
         document.getElementById('reward-section').style.display = 'block';
     }
 }
