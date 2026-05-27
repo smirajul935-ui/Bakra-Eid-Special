@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Ul Adha Mubarak | Celebration</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Animation -->
+    <div id="preloader">
+        <div class="loader-content">
+            <i class="fa-solid fa-moon moon-spin"></i>
+            <h2>Preparing Celebration...</h2>
+            <button id="enter-btn" class="glow-btn">Enter the Celebration</button>
+        </div>
+    </div>
+
+    <!-- Background Audio (Aapka apna song yahan link hai) -->
+    <audio id="bg-audio" loop>
+        <source src="eid-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Floating Lanterns -->
+    <img src="https://cdn-icons-png.flaticon.com/512/2304/2304245.png" class="lantern lantern-left" alt="Lantern">
+    <img src="https://cdn-icons-png.flaticon.com/512/2304/2304245.png" class="lantern lantern-right" alt="Lantern">
+
+    <!-- Header / Logo & Controls -->
+    <header class="top-controls glass-card">
+        <!-- Aapki Photo/Logo yahan aayegi -->
+        <img src="logo.png" alt="Logo" class="site-logo">
+        
+        <div class="controls-right">
+            <button id="mute-btn"><i class="fa-solid fa-volume-high"></i></button>
+            <div class="share-btns">
+                <button onclick="shareWhatsApp()"><i class="fa-brands fa-whatsapp"></i></button>
+                <button onclick="shareTelegram()"><i class="fa-brands fa-telegram"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content glass-card blur-effect">
+            <div class="crescent-moon">
+                <i class="fa-solid fa-moon"></i>
+                <i class="fa-solid fa-star star-1"></i>
+                <i class="fa-solid fa-star star-2"></i>
+            </div>
+            
+            <h1 id="typing-text" class="arabic-font"></h1>
+            <p class="welcome-msg">May the divine blessings of Allah bring you hope, faith, and joy on Eid-ul-Adha and forever.</p>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown" id="countdown">
+                <div class="time-box"><span id="days">00</span><p>Days</p></div>
+                <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+                <div class="time-box"><span id="mins">00</span><p>Mins</p></div>
+                <div class="time-box"><span id="secs">00</span><p>Secs</p></div>
+            </div>
+
+            <div class="sheep-container">
+                <img src="https://cdn-icons-png.flaticon.com/512/5021/5021577.png" alt="Bakra" class="sheep-img float-anim">
+            </div>
+
+            <button class="glow-btn scroll-btn" onclick="scrollToGallery()">View Gallery <i class="fa-solid fa-arrow-down"></i></button>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <h2 class="arabic-font section-title">Eid Memories</h2>
+        <div class="swiper mySwiper glass-card blur-effect">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1600021376839-a99f1c7d2424?q=80&w=800&auto=format&fit=crop" alt="Eid 1"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1596443656910-482aae4d5884?q=80&w=800&auto=format&fit=crop" alt="Eid 2"></div>
+                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1565552643954-1eb00c82fb66?q=80&w=800&auto=format&fit=crop" alt="Eid 3"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with ❤️ for Eid Celebration</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
