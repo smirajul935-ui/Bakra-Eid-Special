@@ -3,104 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eid Ul Adha Mubarak | Celebration</title>
+    <title>Eid Mubarak Special</title>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Amita:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Loading Animation -->
+    <!-- Start Preloader (Required for playing music) -->
     <div id="preloader">
         <div class="loader-content">
-            <i class="fa-solid fa-moon moon-spin"></i>
-            <h2>Preparing Celebration...</h2>
-            <button id="enter-btn" class="glow-btn">Enter the Celebration</button>
+            <h1 class="glow-text">Bakra Eid Special</h1>
+            <p>Tap below to open your surprise</p>
+            <button id="enter-btn" class="premium-btn"><i class="fa-solid fa-gift"></i> Open Greeting</button>
         </div>
     </div>
 
-    <!-- Background Audio (Aapka apna song yahan link hai) -->
+    <!-- Background Audio (Aapka Song) -->
     <audio id="bg-audio" loop>
         <source src="eid-song.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Particle Background -->
-    <div id="particles-js"></div>
+    <!-- Background Video (Aapki Video) -->
+    <video autoplay muted loop id="bg-video">
+        <source src="bg-video.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div> <!-- Dark transparent overlay -->
 
-    <!-- Floating Lanterns -->
-    <img src="https://cdn-icons-png.flaticon.com/512/2304/2304245.png" class="lantern lantern-left" alt="Lantern">
-    <img src="https://cdn-icons-png.flaticon.com/512/2304/2304245.png" class="lantern lantern-right" alt="Lantern">
+    <!-- Floating Moons & Stars Container -->
+    <div id="floating-elements"></div>
 
-    <!-- Header / Logo & Controls -->
-    <header class="top-controls glass-card">
-        <!-- Aapki Photo/Logo yahan aayegi -->
-        <img src="logo.png" alt="Logo" class="site-logo">
+    <!-- Main Content Box -->
+    <main class="main-container">
         
-        <div class="controls-right">
-            <button id="mute-btn"><i class="fa-solid fa-volume-high"></i></button>
-            <div class="share-btns">
-                <button onclick="shareWhatsApp()"><i class="fa-brands fa-whatsapp"></i></button>
-                <button onclick="shareTelegram()"><i class="fa-brands fa-telegram"></i></button>
-            </div>
-        </div>
-    </header>
+        <!-- Greeting Name (Dynamic) -->
+        <h2 id="greeting-name" class="dynamic-name glow-text"></h2>
 
-    <!-- Main Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content glass-card blur-effect">
-            <div class="crescent-moon">
-                <i class="fa-solid fa-moon"></i>
-                <i class="fa-solid fa-star star-1"></i>
-                <i class="fa-solid fa-star star-2"></i>
-            </div>
+        <div class="message-card glass-card">
+            <p class="msg-line">🌙✨ Assalamu Alaikum ✨🌙</p>
             
-            <h1 id="typing-text" class="arabic-font"></h1>
-            <p class="welcome-msg">May the divine blessings of Allah bring you hope, faith, and joy on Eid-ul-Adha and forever.</p>
+            <p class="ascii-art gold-text">
+                ╔══❖•ೋ° °ೋ•❖══╗<br>
+                🕋 Eid Ul Adha Mubarak 🐐<br>
+                ╚══❖•ೋ° °ೋ•❖══╝
+            </p>
             
-            <!-- Countdown Timer -->
-            <div class="countdown" id="countdown">
-                <div class="time-box"><span id="days">00</span><p>Days</p></div>
-                <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
-                <div class="time-box"><span id="mins">00</span><p>Mins</p></div>
-                <div class="time-box"><span id="secs">00</span><p>Secs</p></div>
-            </div>
-
-            <div class="sheep-container">
-                <img src="https://cdn-icons-png.flaticon.com/512/5021/5021577.png" alt="Bakra" class="sheep-img float-anim">
-            </div>
-
-            <button class="glow-btn scroll-btn" onclick="scrollToGallery()">View Gallery <i class="fa-solid fa-arrow-down"></i></button>
+            <p class="msg-line">Allah aapki zindagi ko<br>khushiyon, rehmat aur sukoon se bhar de 🤲❤️</p>
+            
+            <p class="msg-line">Har dua qubool ho,<br>har gham door ho,<br>aur har din Eid jaisa khoobsurat ho ✨🌸</p>
+            
+            <p class="msg-line">🐐 Bakra Eid ki dil se mubarakbaad 🕌<br>Aap aur aapke family hamesha muskurate rahein 💫</p>
+            
+            <h3 class="eid-year gold-text pulse-anim">🌙 Eid Mubarak 2026 🌙</h3>
         </div>
-    </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery-section" id="gallery">
-        <h2 class="arabic-font section-title">Eid Memories</h2>
-        <div class="swiper mySwiper glass-card blur-effect">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1600021376839-a99f1c7d2424?q=80&w=800&auto=format&fit=crop" alt="Eid 1"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1596443656910-482aae4d5884?q=80&w=800&auto=format&fit=crop" alt="Eid 2"></div>
-                <div class="swiper-slide"><img src="https://images.unsplash.com/photo-1565552643954-1eb00c82fb66?q=80&w=800&auto=format&fit=crop" alt="Eid 3"></div>
+        <!-- Countdown Timer -->
+        <div class="countdown-container glass-card">
+            <h3>⏳ Bakra Eid Countdown</h3>
+            <div id="countdown" class="countdown">
+                <div><span id="hours">00</span><p>Hours</p></div>
+                <div><span id="mins">00</span><p>Mins</p></div>
+                <div><span id="secs">00</span><p>Secs</p></div>
             </div>
-            <div class="swiper-pagination"></div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>Made with ❤️ for Eid Celebration</p>
-    </footer>
+        <!-- Name Input & Share Box -->
+        <div class="share-section glass-card" id="share-section">
+            <p>Apna naam likhein aur doston ko bhejein 👇</p>
+            <input type="text" id="user-name-input" placeholder="Aapka Naam Yahan Likhein..." autocomplete="off">
+            <button onclick="createCustomLink()" class="premium-btn">Create Magic Link ✨</button>
+        </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+        <!-- Hidden Share Buttons (Appears after creating link) -->
+        <div class="social-share" id="social-share" style="display: none;">
+            <p>Share with friends & family:</p>
+            <button onclick="shareWhatsApp()" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
+            <button onclick="shareTelegram()" class="telegram-btn"><i class="fa-brands fa-telegram"></i> Telegram</button>
+            <br>
+            <button onclick="copyLink()" class="copy-btn"><i class="fa-solid fa-link"></i> Copy Link</button>
+        </div>
+
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
