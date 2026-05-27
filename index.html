@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <!-- Start Preloader (Required for playing music) -->
+    <!-- Tap to Open Box (For Audio Permission) -->
     <div id="preloader">
         <div class="loader-content">
             <h1 class="glow-text">Bakra Eid Special</h1>
@@ -23,26 +23,27 @@
         </div>
     </div>
 
-    <!-- Background Audio (Aapka Song) -->
+    <!-- Background Audio -->
     <audio id="bg-audio" loop>
         <source src="eid-song.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Background Video (Aapki Video) -->
-    <video autoplay muted loop id="bg-video">
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline id="bg-video">
         <source src="bg-video.mp4" type="video/mp4">
     </video>
-    <div class="video-overlay"></div> <!-- Dark transparent overlay -->
+    <div class="video-overlay"></div> <!-- Very light overlay so video is clearly visible -->
 
-    <!-- Floating Moons & Stars Container -->
+    <!-- Floating Moons & Stars -->
     <div id="floating-elements"></div>
 
     <!-- Main Content Box -->
     <main class="main-container">
         
-        <!-- Greeting Name (Dynamic) -->
-        <h2 id="greeting-name" class="dynamic-name glow-text"></h2>
+        <!-- Glowing & Floating Name -->
+        <h2 id="greeting-name" class="dynamic-name"></h2>
 
+        <!-- Greeting Card -->
         <div class="message-card glass-card">
             <p class="msg-line">🌙✨ Assalamu Alaikum ✨🌙</p>
             
@@ -63,7 +64,7 @@
 
         <!-- Countdown Timer -->
         <div class="countdown-container glass-card">
-            <h3>⏳ Bakra Eid Countdown</h3>
+            <h3 class="gold-text"><i class="fa-solid fa-hourglass-half"></i> Bakra Eid Countdown</h3>
             <div id="countdown" class="countdown">
                 <div><span id="hours">00</span><p>Hours</p></div>
                 <div><span id="mins">00</span><p>Mins</p></div>
@@ -73,18 +74,15 @@
 
         <!-- Name Input & Share Box -->
         <div class="share-section glass-card" id="share-section">
-            <p>Apna naam likhein aur doston ko bhejein 👇</p>
+            <p style="font-weight: bold; margin-bottom: 10px;">Aap bhi apna naam likh kar bhejein 👇</p>
             <input type="text" id="user-name-input" placeholder="Aapka Naam Yahan Likhein..." autocomplete="off">
             <button onclick="createCustomLink()" class="premium-btn">Create Magic Link ✨</button>
         </div>
 
-        <!-- Hidden Share Buttons (Appears after creating link) -->
-        <div class="social-share" id="social-share" style="display: none;">
-            <p>Share with friends & family:</p>
-            <button onclick="shareWhatsApp()" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
-            <button onclick="shareTelegram()" class="telegram-btn"><i class="fa-brands fa-telegram"></i> Telegram</button>
-            <br>
-            <button onclick="copyLink()" class="copy-btn"><i class="fa-solid fa-link"></i> Copy Link</button>
+        <!-- WhatsApp Share Button -->
+        <div class="social-share glass-card" id="social-share" style="display: none;">
+            <p style="font-weight: bold; margin-bottom: 15px; color: var(--gold);">Link Ready! Share with friends:</p>
+            <button onclick="shareWhatsApp()" class="whatsapp-btn"><i class="fa-brands fa-whatsapp"></i> Share on WhatsApp</button>
         </div>
 
     </main>
